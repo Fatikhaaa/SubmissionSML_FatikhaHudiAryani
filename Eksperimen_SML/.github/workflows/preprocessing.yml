@@ -1,0 +1,33 @@
+name: Run Preprocessing
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:   # bisa dijalankan manual
+
+jobs:
+  preprocess:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas scikit-learn joblib
+
+      - name: Run Preprocessing
+        run: |
+          python main.py
+
+      - name: Upload Processed Dataset as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: processed-dataset
+          path: preprocessing/insurance_preprocessing/*.csv
