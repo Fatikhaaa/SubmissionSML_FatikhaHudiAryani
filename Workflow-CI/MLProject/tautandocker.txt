@@ -1,0 +1,1 @@
+https://hub.docker.com/repository/docker/fatikha03/sml_insurance_model/general
