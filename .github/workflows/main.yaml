@@ -27,12 +27,12 @@ jobs:
 
     - name: Run preprocessing
       run: |
-        cd kriteria-1 && python run_preprocessing.py
+        cd Eksperimen_SML && python preprocessing.py
 
     - name: Commit & Push results
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add kriteria-1/preprocessing/insurance_preprocessing/*.csv
+        git add Eksperimen_SML/preprocessing/insurance_preprocessing/*.csv
         git commit -m "Update preprocessed dataset [skip ci]" || echo "No changes to commit"
         git push origin main
